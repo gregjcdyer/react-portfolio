@@ -1,27 +1,39 @@
+import { ListItem, MenuList } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <nav>
-      <ul style={{ display: 'flex', listStyle: 'none', margin: '0.3rem' }}>
-        <li>
+    <nav style={styles.nav}>
+      <MenuList style={styles.list}>
+        <ListItem>
           <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link to='/wildlife'>Wildlife</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link to='/landscape'>Landscape</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link to='astro'>Astro</Link>
-        </li>
-      </ul>
+        </ListItem>
+        <ListItem>
+          <Link to='/about'>About</Link>
+        </ListItem>
+      </MenuList>
     </nav>
   );
+};
+
+const styles = {
+  nav: {
+    width: '100px',
+  },
+  list: {
+    display: 'flex',
+    flexDirection: 'row' as const,
+    padding: '0',
+  },
 };
 
 export default NavBar;
