@@ -2,24 +2,24 @@ import { ListItem, MenuList } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+  const links = [
+    { path: '/', label: 'Home' },
+    { path: '/wildlife', label: 'Wildlife' },
+    { path: '/landscape', label: 'Landscape' },
+    { path: '/astro', label: 'Astro' },
+    { path: '/about', label: 'About' },
+  ];
+
   return (
     <nav style={styles.nav}>
       <MenuList style={styles.list}>
-        <ListItem>
-          <Link to='/'>Home</Link>
-        </ListItem>
-        <ListItem>
-          <Link to='/wildlife'>Wildlife</Link>
-        </ListItem>
-        <ListItem>
-          <Link to='/landscape'>Landscape</Link>
-        </ListItem>
-        <ListItem>
-          <Link to='astro'>Astro</Link>
-        </ListItem>
-        <ListItem>
-          <Link to='/about'>About</Link>
-        </ListItem>
+        {links.map((link) => (
+          <ListItem key={link.path}>
+            <Link to={link.path} style={styles.link}>
+              {link.label}
+            </Link>
+          </ListItem>
+        ))}
       </MenuList>
     </nav>
   );
@@ -28,6 +28,7 @@ const NavBar = () => {
 interface Styles {
   nav: React.CSSProperties;
   list: React.CSSProperties;
+  link: React.CSSProperties;
 }
 
 const styles: Styles = {
@@ -38,6 +39,8 @@ const styles: Styles = {
     display: 'flex',
     flexDirection: 'row',
     padding: '0',
+  },
+  link: {
     textDecoration: 'none',
   },
 };
