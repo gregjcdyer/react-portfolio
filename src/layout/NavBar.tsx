@@ -25,14 +25,20 @@ const NavBar = () => {
   );
 };
 
-const styles = {
+interface Styles {
+  nav: React.CSSProperties;
+  list: React.CSSProperties;
+}
+
+const styles: Styles = {
   nav: {
     width: '100px',
   },
   list: {
     display: 'flex',
-    flexDirection: 'row' as const,
+    flexDirection: 'row',
     padding: '0',
+    textDecoration: 'none',
   },
 };
 
