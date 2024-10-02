@@ -1,8 +1,9 @@
 import { ListItem, MenuList } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { RoutePath } from '../routes';
 
 const NavBar = () => {
-  const links = [
+  const links: { path: RoutePath; label: string }[] = [
     { path: '/', label: 'Home' },
     { path: '/wildlife', label: 'Wildlife' },
     { path: '/landscape', label: 'Landscape' },

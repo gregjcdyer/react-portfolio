@@ -6,6 +6,15 @@ import Astro from './pages/Astro';
 import Home from './pages/Home';
 import Landscape from './pages/Landscape';
 import Wildlife from './pages/Wildlife';
+import { RoutePath } from './routes'; // Import the RoutePath type
+
+const appRoutes: { path: RoutePath; element: JSX.Element }[] = [
+  { path: '/', element: <Home /> },
+  { path: '/about', element: <About /> },
+  { path: '/wildlife', element: <Wildlife /> },
+  { path: '/landscape', element: <Landscape /> },
+  { path: '/astro', element: <Astro /> },
+];
 
 function App() {
   return (
@@ -14,11 +23,13 @@ function App() {
         <NavBar />
         <div className='container'>
           <Routes>
-            <Route index element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/wildlife' element={<Wildlife />} />
-            <Route path='/landscape' element={<Landscape />} />
-            <Route path='/astro' element={<Astro />} />
+            {appRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
             <Route path='*' element={<h1>Not Found</h1>} />
           </Routes>
         </div>
