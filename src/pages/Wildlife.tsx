@@ -1,3 +1,4 @@
+import { ImageList, ImageListItem } from '@mui/material';
 import ImageGallery from '../components/Images/ImageGallery';
 
 const Wildlife = () => {
@@ -47,9 +48,17 @@ const Wildlife = () => {
   return (
     <div>
       <h1>Wildlife</h1>
-      <ImageGallery
-        images={images.map((img) => ({ src: img.download_url, alt: '' }))}
-      />
+      <ImageList variant='masonry' cols={4} gap={8}>
+        {images.map((img) => (
+          <ImageListItem key={img.id}>
+            <img
+              src={img.download_url}
+              alt=''
+              style={{ width: '100%', height: 'auto' }}
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
     </div>
   );
 };
